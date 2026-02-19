@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const formatRupiah = (num: number) =>
   new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 }).format(num);
 
-const Hero = ({donation} : {donation: number}) => {
+const Hero = ({ donation }: { donation: number }) => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center bg-primary overflow-hidden">
       {/* Subtle pattern overlay */}
@@ -57,7 +57,7 @@ const Hero = ({donation} : {donation: number}) => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-xl md:text-2xl text-primary-foreground/90 font-serif italic mb-8"
           >
-            "Meningkatkan Pengetahuan, Menebar Kebaikan"
+            "Level Up Your Skill, Scale Up Your Charity!"
           </motion.p>
 
           <motion.div
@@ -109,16 +109,9 @@ const Hero = ({donation} : {donation: number}) => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button
-              size="lg"
-              className="bg-accent text-accent-foreground hover:bg-gold-dark px-8 py-6 text-lg font-semibold shadow-lg shadow-accent/30"
-            >
-              Daftar Sekarang
-            </Button>
-            <Button
               asChild
               size="lg"
-              variant="outline"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 px-8 py-6 text-lg"
+              className="bg-accent text-accent-foreground hover:bg-gold-dark px-8 py-6 text-lg font-semibold shadow-lg shadow-accent/30"
             >
               <Link to="/calendar">
                 Lihat Jadwal
