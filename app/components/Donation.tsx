@@ -30,12 +30,9 @@ const Donation = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
             Berbagi Buka Puasa
           </h2>
-          <h3 className="text-2xl text-primary-foreground/90 mb-8">
-            Berbagi Makanan untuk Yatim Piatu dan Dhuafa
-          </h3>
           
           <p className="text-primary-foreground/80 text-lg leading-relaxed max-w-2xl mx-auto mb-12">
-            Seluruh donasi dari pendaftaran webinar sepenuhnya akan disalurkan melalui campaign kitabisa.com. 
+            Seluruh donasi dari pendaftaran webinar sepenuhnya akan disalurkan ke yang membutuhkan. 
             Setiap donasi yang masuk akan sangat berarti bagi mereka yang membutuhkan. 
             Semoga menjadi amal kebaikan untuk kita semua.
           </p>
@@ -44,7 +41,7 @@ const Donation = () => {
             <p className="text-primary-foreground/70 text-sm mb-2">Donasi Minimal</p>
             <p className="text-5xl font-bold text-accent mb-4">Rp 1.000</p>
             <p className="text-primary-foreground text-sm">
-              Kamu akan mendapatkan: <strong>Pahala, Materi, & Sertifikat</strong>
+              Kamu akan mendapatkan: <strong>Pahala & Materi</strong>
             </p>
           </div>
 

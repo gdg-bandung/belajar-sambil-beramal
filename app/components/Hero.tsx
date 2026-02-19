@@ -37,7 +37,7 @@ const Hero = ({donation} : {donation: number}) => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30 mb-8"
           >
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-            <span className="text-primary-foreground text-sm font-medium">Season 5 • Ramadhan 2025</span>
+            <span className="text-primary-foreground text-sm font-medium">Season 6 • Ramadhan 2026</span>
           </motion.div>
 
           {/* Main Hashtag */}
@@ -89,7 +89,7 @@ const Hero = ({donation} : {donation: number}) => {
           >
             <div className="flex items-center gap-2 px-4 py-2 bg-primary-foreground/10 rounded-full backdrop-blur-sm">
               <Calendar className="w-4 h-4 text-accent" />
-              <span className="text-primary-foreground text-sm">8 - 30 Maret 2025</span>
+              <span className="text-primary-foreground text-sm">20 Februari - 14 Maret 2026</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-primary-foreground/10 rounded-full backdrop-blur-sm">
               <MapPin className="w-4 h-4 text-accent" />

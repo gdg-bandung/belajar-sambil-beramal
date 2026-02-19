@@ -48,7 +48,7 @@ const EventDetails = () => {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Tanggal Pelaksanaan</p>
-                    <p className="text-lg font-semibold text-foreground">8 Maret - 30 Maret 2025</p>
+                    <p className="text-lg font-semibold text-foreground">20 Februari - 14 Maret 2026</p>
                     <p className="text-sm text-muted-foreground">*Setiap pekan minimal ada 1 event</p>
                   </div>
                 </div>
@@ -59,8 +59,7 @@ const EventDetails = () => {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Waktu</p>
-                    <p className="text-lg font-semibold text-foreground">10:00 - 17:30 WIB</p>
-                    <p className="text-sm text-muted-foreground">21:15 - 22:30 WIB (sesi malam)</p>
+                    <p className="text-lg font-semibold text-foreground">09:00 - 17:00 WIB</p>
                   </div>
                 </div>
 

@@ -1,76 +1,109 @@
-import { motion } from "framer-motion";
-import { Phone, Mail, Globe } from "lucide-react";
+import { Users } from "lucide-react";
+import { Button } from "./ui/button";
+import { Link } from "react-router";
+import { CHANNEL, SOCIAL_MEDIA } from "@/data/footer";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-foreground py-16">
-      <div className="container px-4">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
-            <h3 className="text-3xl font-bold text-background mb-4">Binary Nusantara</h3>
-            <p className="text-background/60 text-lg italic font-serif">
-              "Digital Creative Community"
-            </p>
-          </motion.div>
+      <div className="container mx-auto px-4">
+        <div className="grid md:grid-cols-3 gap-8 items-center pb-8">
+          {/* Logo and Name */}
+          <div className="flex justify-center md:justify-start items-center gap-4">
+            <img
+              src="/full-logo-dark.svg"
+              alt="GDG Bandung Logo"
+              className="h-10 md:h-14"
+              fetchPriority="low"
+              loading="lazy"
+            />
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-8 mb-12"
-          >
-            <a 
-              href="tel:089655207298" 
-              className="flex items-center gap-3 text-background/70 hover:text-accent transition-colors"
-            >
-              <div className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center">
-                <Phone className="w-5 h-5" />
-              </div>
-              <span>089655207298</span>
-            </a>
-            <a 
-              href="mailto:connect@binarynusantara.com" 
-              className="flex items-center gap-3 text-background/70 hover:text-accent transition-colors"
-            >
-              <div className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center">
-                <Mail className="w-5 h-5" />
-              </div>
-              <span>connect@binarynusantara.com</span>
-            </a>
-            <a 
-              href="https://binarynusantara.com" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 text-background/70 hover:text-accent transition-colors"
-            >
-              <div className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center">
-                <Globe className="w-5 h-5" />
-              </div>
-              <span>binarynusantara.com</span>
-            </a>
-          </motion.div>
+          {/* Channels and Social Media */}
+          <div className="text-center">
+            <p className="font-semibold text-white mb-4">Connect With Us</p>
+            <div className="flex justify-center gap-4 mb-4">
+              {CHANNEL.map((item, index) => (
+                <Button
+                  size="sm"
+                  className="flex items-center gap-2 border-gray-600 bg-white text-gray-400 hover:bg-gray-800 hover:text-white"
+                  asChild
+                  key={item.name + index}
+                >
+                  <Link to={item.url} target="_blank" aria-label={item.name}>
+                    {item.icon}
+                    {item.name}
+                  </Link>
+                </Button>
+              ))}
+            </div>
+            <div className="flex justify-center gap-3">
+              {SOCIAL_MEDIA.map((item, index) => (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="p-2 hover:bg-gray-800"
+                  asChild
+                  key={item.name + index}
+                >
+                  <Link to={item.url} target="_blank" aria-label={item.name}>
+                    {item.icon}
+                  </Link>
+                </Button>
+              ))}
+            </div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-center pt-8 border-t border-background/10"
-          >
-            <p className="text-background/50 text-sm">
-              © 2025 Binary Nusantara. All rights reserved.
+          {/* Join Community Button */}
+          <div className="text-center md:text-right">
+            <p className="font-semibold text-white mb-2">
+              Google Developer Group Bandung
             </p>
-            <p className="text-background/40 text-sm mt-2">
-              #Belajar<wbr />Sambil<wbr />Beramal Season 5 • Ramadhan 2025
-            </p>
-          </motion.div>
+            <div className="space-y-2 mb-6">
+              <div>
+                <Link
+                  to="https://gdgbandung.com/code-of-conduct"
+                  className="text-gray-300 hover:text-white transition-colors text-sm block mx-auto md:mx-0 md:ml-auto"
+                >
+                  Code of Conduct
+                </Link>
+              </div>
+              <div>
+                <Link
+                  to="https://gdgbandung.com/terms-and-conditions"
+                  className="text-gray-300 hover:text-white transition-colors text-sm block mx-auto md:mx-0 md:ml-auto"
+                >
+                  Request for Media Partner
+                </Link>
+              </div>
+              <div>
+                <Link
+                  to="https://gdgbandung.com/brand-guidelines"
+                  className="text-gray-300 hover:text-white transition-colors text-sm block mx-auto md:mx-0 md:ml-auto"
+                >
+                  Brand Guidelines
+                </Link>
+              </div>
+            </div>
+            <p className="font-semibold text-white mb-4">Join Our Community</p>
+            <Button
+              className="bg-brandBlue hover:bg-blue-600 duration-300 ease-in-out text-white"
+              asChild
+            >
+              <Link to="https://gdg.community.dev/gdg-bandung/" target="_blank">
+                <Users className="h-4 w-4 mr-2" />
+                Join Community
+              </Link>
+            </Button>
+          </div>
+        </div>
+        <div className="pt-8 border-t border-gray-700 flex items-center">
+          <p className="text-gray-400 text-sm mb-4 w-full md:mb-0 text-center">
+            &copy; {currentYear} Google Developer Group Bandung. All rights
+            reserved.
+          </p>
         </div>
       </div>
     </footer>

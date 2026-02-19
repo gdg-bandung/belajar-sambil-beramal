@@ -8,6 +8,33 @@ const EventRecap = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const stats2021 = {
+    year: 2021,
+    webinars: 3,
+    participants: 87,
+    donations: "Rp 1.297.593",
+    speakers: 3,
+    link: "https://www.instagram.com/p/COx2DVfpZMJ/"
+  };
+
+  const stats2022 = {
+    year: 2022,
+    webinars: 2,
+    participants: 70,
+    donations: "Rp 750.000",
+    speakers: 2,
+    link: "https://www.instagram.com/p/CcPXiE0pPCH/"
+  };
+
+  const stats2023 = {
+    year: 2023,
+    webinars: 5,
+    participants: 200,
+    donations: "Rp 2.297.000",
+    speakers: 5,
+    link: "https://kitabisa.com/campaign/binarynusantara"
+  };
+
   const stats2024 = {
     year: 2024,
     webinars: 12,
@@ -26,7 +53,7 @@ const EventRecap = () => {
     link: "https://www.instagram.com/p/DIytEW8SwHd/"
   };
 
-  const RecapCard = ({ stats, delay }: { stats: any, delay: number }) => (
+  const RecapCard = ({ stats, delay }: { stats, delay: number }) => (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -100,8 +127,11 @@ const EventRecap = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <RecapCard stats={stats2024} delay={0.2} />
-          <RecapCard stats={stats2025} delay={0.4} />
+          <RecapCard stats={stats2022} delay={0.1} />
+          <RecapCard stats={stats2022} delay={0.2} />
+          <RecapCard stats={stats2023} delay={0.3} />
+          <RecapCard stats={stats2024} delay={0.4} />
+          <RecapCard stats={stats2025} delay={0.5} />
         </div>
       </div>
     </section>
