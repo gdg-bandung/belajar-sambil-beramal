@@ -16,7 +16,7 @@ const Footer = () => {
               src="/full-logo-dark.svg"
               alt="GDG Bandung Logo"
               className="h-10 md:h-14"
-              fetchPriority="low"
+              fetchpriority="low"
               loading="lazy"
             />
           </div>

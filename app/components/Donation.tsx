@@ -52,7 +52,7 @@ const Donation = () => {
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-gold-dark px-8 py-6 text-lg font-semibold shadow-lg shadow-accent/30"
             >
-              <Link to="https://gdgbandung.com/bsb-donasi">
+              <Link to="https://gdgbandung.com/bsb-donasi" target="_blank">
                 <Heart className="w-5 h-5 mr-2" />
                 Donasi Sekarang
               </Link>

@@ -38,18 +38,7 @@ const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
-  const getEventStatus = (eventDate: string) => {
-    if (!eventDate) return "Akan Datang";
-    const now = new Date();
-    const event = new Date(eventDate);
-
-    event.setHours(23, 59, 59, 999);
-
-    if (event < now) return "Selesai";
-    if (event.toDateString() === now.toDateString()) return "Hari Ini";
-    return "Akan Datang";
-  };
-
+  
   return (
     <section id="events" className="py-24 bg-background" ref={ref}>
       <div className="container px-4">
@@ -83,7 +72,7 @@ const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {events.map((event, index) => {
-              const status = getEventStatus(event.date);
+              const status = event.status;
               return (
                 <motion.div
                   key={event.id}

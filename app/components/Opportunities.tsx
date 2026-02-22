@@ -5,7 +5,7 @@ import { Mic, ArrowRight, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router";
 
-const CallForSpeaker = () => {
+const Opportunities = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -76,7 +76,7 @@ const CallForSpeaker = () => {
               size="lg"
               className="bg-orange-500 text-white hover:bg-orange-600 px-8 py-6 text-lg font-semibold shadow-lg shadow-orange-500/30 w-fit"
             >
-              <Link to="https://gdgbandung.com/bsb-sponsor">
+              <Link to="https://gdgbandung.com/bsb-sponsor" target="_blank">
                 Jadi Sponsor <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
@@ -87,4 +87,4 @@ const CallForSpeaker = () => {
   );
 };
 
-export default CallForSpeaker;
+export default Opportunities;
