@@ -29,7 +29,10 @@ const TOPIC_CATEGORIES = [
   "Web Development",
   "Mobile Development", 
   "UI/UX Design", 
-  "Tips & Trick"
+  "Tips & Trick",
+  "Blockchain",
+  "Web3",
+  "Finance"
 ];
 
 const timeSlots = ["10:00", "13:00", "16:00", "20:00"];
