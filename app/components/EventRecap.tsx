@@ -58,7 +58,7 @@ const EventRecap = () => {
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay }}
-      className="bg-card rounded-2xl p-8 shadow-lg border border-border h-full flex flex-col justify-between w-full max-w-[360px] flex-shrink-0 snap-center min-h-[450px]"
+      className="bg-card rounded-2xl p-8 shadow-lg border border-border h-full flex flex-col justify-between w-full max-w-[400px] flex-shrink-0 snap-center"
     >
       <div>
         <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
