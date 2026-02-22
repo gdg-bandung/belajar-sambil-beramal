@@ -109,13 +109,23 @@ const Hero = ({ donation }: { donation: number }) => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button
-              asChild
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-gold-dark px-8 py-6 text-lg font-semibold shadow-lg shadow-accent/30"
+              onClick={() => {
+                const element = document.getElementById("events");
+                if (element) {
+                  const offset = 80; // Offset for fixed navbar
+                  const elementRect = element.getBoundingClientRect().top;
+                  const offsetPosition = elementRect + window.scrollY - offset;
+
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                  });
+                }
+              }}
             >
-              <Link to="/calendar">
                 Lihat Jadwal
-              </Link>
             </Button>
           </motion.div>
         </motion.div>
@@ -125,7 +135,7 @@ const Hero = ({ donation }: { donation: number }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:block"
         >
           <div className="flex flex-col items-center gap-2">
             <span className="text-primary-foreground/60 text-sm">Scroll untuk info lebih</span>
