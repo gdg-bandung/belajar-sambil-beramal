@@ -93,7 +93,7 @@ const Hero = ({ donation }: { donation: number }) => {
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-primary-foreground/10 rounded-full backdrop-blur-sm">
               <MapPin className="w-4 h-4 text-accent" />
-              <span className="text-primary-foreground text-sm">Online via Zoom</span>
+              <span className="text-primary-foreground text-sm">Offline dan Online via Zoom / Google Meet</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-primary-foreground/10 rounded-full backdrop-blur-sm">
               <Users className="w-4 h-4 text-accent" />

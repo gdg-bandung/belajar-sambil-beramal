@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router";
 
 const Donation = () => {
   const ref = useRef(null);
@@ -28,12 +29,12 @@ const Donation = () => {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-            Berbagi Buka Puasa
+            Berbagi Kebaikan
           </h2>
-          
+
           <p className="text-primary-foreground/80 text-lg leading-relaxed max-w-2xl mx-auto mb-12">
-            Seluruh donasi dari pendaftaran webinar sepenuhnya akan disalurkan ke yang membutuhkan. 
-            Setiap donasi yang masuk akan sangat berarti bagi mereka yang membutuhkan. 
+            Seluruh donasi dari pendaftaran webinar sepenuhnya akan disalurkan ke yang membutuhkan.
+            Setiap donasi yang masuk akan sangat berarti bagi mereka yang membutuhkan.
             Semoga menjadi amal kebaikan untuk kita semua.
           </p>
 
@@ -47,16 +48,19 @@ const Donation = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
+              asChild
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-gold-dark px-8 py-6 text-lg font-semibold shadow-lg shadow-accent/30"
             >
-              <Heart className="w-5 h-5 mr-2" />
-              Donasi Sekarang
+              <Link to="https://gdgbandung.com/bsb-donasi">
+                <Heart className="w-5 h-5 mr-2" />
+                Donasi Sekarang
+              </Link>
             </Button>
           </div>
 
           <p className="text-primary-foreground/60 text-sm mt-8">
-            100% donasi disalurkan untuk berbagi buka puasa
+            100% donasi disalurkan untuk mendukung kegiatan kebaikan
           </p>
         </motion.div>
       </div>

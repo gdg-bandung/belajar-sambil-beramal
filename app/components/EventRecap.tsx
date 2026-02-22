@@ -53,12 +53,12 @@ const EventRecap = () => {
     link: "https://www.instagram.com/p/DIytEW8SwHd/"
   };
 
-  const RecapCard = ({ stats, delay }: { stats, delay: number }) => (
+  const RecapCard = ({ stats, delay }: { stats: typeof stats2025, delay: number }) => (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay }}
-      className="bg-card rounded-2xl p-8 shadow-lg border border-border h-full flex flex-col justify-between"
+      className="bg-card rounded-2xl p-8 shadow-lg border border-border h-full flex flex-col justify-between w-full max-w-[360px] flex-shrink-0 snap-center"
     >
       <div>
         <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
@@ -126,8 +126,8 @@ const EventRecap = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <RecapCard stats={stats2022} delay={0.1} />
+        <div className="flex overflow-x-auto gap-8 pb-8 snap-x snap-mandatory scrollbar-hide">
+          <RecapCard stats={stats2021} delay={0.1} />
           <RecapCard stats={stats2022} delay={0.2} />
           <RecapCard stats={stats2023} delay={0.3} />
           <RecapCard stats={stats2024} delay={0.4} />

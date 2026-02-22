@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { id } from "date-fns/locale";
+import { Link } from "react-router";
 
 type Event = {
   id: string;
@@ -25,6 +26,7 @@ type Event = {
   topicCategory: string;
   status: string;
   photo?: string;
+  source?: "gdg" | "submission"; // Added source field
 };
 
 interface UpcomingEventsProps {
@@ -40,7 +42,7 @@ const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
     if (!eventDate) return "Akan Datang";
     const now = new Date();
     const event = new Date(eventDate);
-    
+
     event.setHours(23, 59, 59, 999);
 
     if (event < now) return "Selesai";
@@ -49,7 +51,7 @@ const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
   };
 
   return (
-    <section id="upcoming" className="py-24 bg-background" ref={ref}>
+    <section id="events" className="py-24 bg-background" ref={ref}>
       <div className="container px-4">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -91,38 +93,45 @@ const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
                   className="group h-full"
                 >
                   <div className="bg-card rounded-2xl overflow-hidden shadow-lg border border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
-                    <div className="h-3 bg-gradient-to-r from-primary to-brandBlue-light" />
+                    {event.source === "gdg" && event.photo ? (
+                      <div className="w-full h-48 overflow-hidden">
+                        <img src={event.photo} alt={event.topicTitle} className="w-full h-full object-cover object-top" />
+                      </div>
+                    ) : (
+                      <div className="h-3 bg-gradient-to-r from-primary to-brandBlue-light" />
+                    )}
                     <div className="p-6 flex-1 flex flex-col">
                       <div className="flex justify-between items-start mb-4">
                         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
                           {event.topicCategory}
                         </span>
-                        <span className={`text-xs font-medium px-2 py-1 rounded-full ${
-                          status === "Selesai" ? "bg-muted text-muted-foreground" : 
-                          status === "Hari Ini" ? "bg-green-100 text-green-700" : 
-                          "bg-blue-100 text-blue-700"
-                        }`}>
+                        <span className={`text-xs font-medium px-2 py-1 rounded-full ${status === "Selesai" ? "bg-muted text-muted-foreground" :
+                          status === "Hari Ini" ? "bg-green-100 text-green-700" :
+                            "bg-blue-100 text-blue-700"
+                          }`}>
                           {status}
                         </span>
                       </div>
-                      
+
                       <h3 className="text-xl font-bold text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">
                         {event.topicTitle}
                       </h3>
-                      
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center overflow-hidden border border-border">
-                           {event.photo ? (
-                             <img src={event.photo} alt={event.fullName} className="w-full h-full object-cover" />
-                           ) : (
-                             <User className="w-4 h-4 text-muted-foreground" />
-                           )}
+
+                      {event.source !== "gdg" && (
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center overflow-hidden border border-border">
+                            {event.photo ? (
+                              <img src={event.photo} alt={event.fullName} className="w-full h-full object-cover" />
+                            ) : (
+                              <User className="w-4 h-4 text-muted-foreground" />
+                            )}
+                          </div>
+                          <div>
+                            <p className="text-sm font-medium text-foreground line-clamp-1">{event.fullName}</p>
+                            <p className="text-xs text-muted-foreground line-clamp-1">{event.institution}</p>
+                          </div>
                         </div>
-                        <div>
-                          <p className="text-sm font-medium text-foreground line-clamp-1">{event.fullName}</p>
-                          <p className="text-xs text-muted-foreground line-clamp-1">{event.institution}</p>
-                        </div>
-                      </div>
+                      )}
 
                       <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
                         {event.description}
@@ -139,9 +148,15 @@ const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
                             <span>{event.time}</span>
                           </div>
                         </div>
-                        
-                        <Button 
-                          onClick={() => setSelectedEvent(event)}
+
+                        <Button
+                          onClick={() => {
+                            if (event.source === "gdg") {
+                              window.open(event.id, "_blank");
+                            } else {
+                              setSelectedEvent(event);
+                            }
+                          }}
                           className="w-full"
                           variant="outline"
                         >
@@ -163,7 +178,7 @@ const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
             <DialogTitle>Detail Event</DialogTitle>
             <DialogDescription>Informasi lengkap mengenai webinar ini.</DialogDescription>
           </DialogHeader>
-          
+
           {selectedEvent && (
             <div className="space-y-6 pt-4">
               <div>
@@ -175,8 +190,9 @@ const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
                 </h2>
               </div>
 
-              <div className="bg-muted/30 p-4 rounded-xl space-y-3">
-                 <div className="flex items-start gap-4">
+              {selectedEvent.source !== "gdg" && (
+                <div className="bg-muted/30 p-4 rounded-xl space-y-3">
+                  <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center border border-border flex-shrink-0 overflow-hidden">
                       {selectedEvent.photo ? (
                         <img src={selectedEvent.photo} alt={selectedEvent.fullName} className="w-full h-full object-cover" />
@@ -196,8 +212,9 @@ const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
                         {selectedEvent.role || "Speaker"}
                       </p>
                     </div>
-                 </div>
-              </div>
+                  </div>
+                </div>
+              )}
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-card border rounded-lg p-3">
@@ -210,7 +227,7 @@ const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
                   </p>
                 </div>
                 <div className="bg-card border rounded-lg p-3">
-                   <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                  <div className="flex items-center gap-2 text-muted-foreground mb-1">
                     <Clock className="w-4 h-4" />
                     <span className="text-xs">Waktu</span>
                   </div>
@@ -224,7 +241,7 @@ const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
                   {selectedEvent.description}
                 </div>
               </div>
-              
+
               <div className="pt-4 border-t flex justify-end">
                 <Button onClick={() => setSelectedEvent(null)}>Tutup</Button>
               </div>

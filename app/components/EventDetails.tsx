@@ -4,9 +4,10 @@ import { useRef } from "react";
 import { Calendar, Clock, MapPin, Laptop, Users, Sparkles } from "lucide-react";
 
 const topics = [
-  "AI/ML", "Career Path", "Business Management", "SEO", "Startup", 
+  "AI/ML", "Career Path", "Business Management", "SEO", "Startup",
   "Data Science", "DevOps", "Project Management", "Web Development",
-  "Mobile Development", "UI/UX Design", "Tips & Trick"
+  "Mobile Development", "UI/UX Design", "Tips & Trick", "Blockchain",
+  "Web3", "Finance"
 ];
 
 const EventDetails = () => {
@@ -40,7 +41,7 @@ const EventDetails = () => {
                 <Sparkles className="w-6 h-6 text-accent" />
                 Detail Pelaksanaan
               </h3>
-              
+
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -98,7 +99,7 @@ const EventDetails = () => {
                 <Laptop className="w-6 h-6 text-accent" />
                 Topik Pembahasan
               </h3>
-              
+
               <div className="flex flex-wrap gap-3">
                 {topics.map((topic, index) => (
                   <motion.span
@@ -112,10 +113,6 @@ const EventDetails = () => {
                   </motion.span>
                 ))}
               </div>
-
-              <p className="text-primary-foreground/70 text-sm mt-8">
-                *Materi sepenuhnya dibebaskan kepada speaker
-              </p>
             </div>
           </motion.div>
         </div>

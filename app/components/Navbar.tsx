@@ -18,7 +18,7 @@ const navLinks = [
   { label: "Tentang", href: "about" },
   { label: "Tujuan", href: "objectives" },
   { label: "Detail", href: "details" },
-  { label: "Kalender", href: "/calendar", isRoute: true },
+  { label: "Event", href: "events" },
   { label: "Donasi", href: "donation" },
 ];
 
@@ -61,9 +61,7 @@ const Navbar = () => {
     }
   }, [location, isHomePage]);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string, isRoute?: boolean) => {
-    if (isRoute) return;
-    
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
     e.preventDefault();
     if (!isHomePage) {
       navigate(`/#${href}`);
@@ -123,8 +121,8 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                to={link.isRoute ? link.href : `/#${link.href}`}
-                onClick={(e) => handleNavClick(e, link.href, link.isRoute)}
+                to={`/#${link.href}`}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`text-sm font-medium transition-colors hover:text-accent ${linkTextClass}`}
               >
                 {link.label}
@@ -198,8 +196,8 @@ const Navbar = () => {
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
-                    to={link.isRoute ? link.href : `/#${link.href}`}
-                    onClick={(e) => handleNavClick(e, link.href, link.isRoute)}
+                    to={`/#${link.href}`}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="text-foreground py-2 font-medium"
                   >
                     {link.label}
